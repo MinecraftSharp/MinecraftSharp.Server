@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MinecraftSharp.Server.Logic.MinecraftSharp.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -35,8 +36,20 @@ namespace MinecraftSharp.Server
             }
             else
             {
-                Console.WriteLine("Please enter a port to start your server on");
-                string Port = Console.ReadLine();
+                int Port = 0;
+                try
+                {
+                    Console.WriteLine("Please enter a port to start your server on");
+                    Port = Convert.ToInt32(Console.ReadLine());
+                }
+                catch 
+                {
+                    Console.WriteLine("Invalid input format shutting down");
+                    Console.ReadLine();
+                }
+
+                StartServer(GetIp(), Port);
+                DoLoop();
             }
         }
         private static void StartServer(string IP, int Port)
@@ -53,6 +66,27 @@ namespace MinecraftSharp.Server
             {
 
             }
+        }
+        private static void DoLoop()
+        {
+            string split = Console.ReadLine();
+            string[] command = split.Split(' ');
+            try
+            {
+                try
+                {
+                    Console.WriteLine(">" + Command.DoCommand(command[0], command[1], command[2]));
+                }
+                catch
+                {
+                    Console.WriteLine(">" + Command.DoCommand(command[0], command[1], null));
+                }
+            }
+            catch
+            {
+                Console.WriteLine(">" + Command.DoCommand(command[0], null, null));
+            }
+            DoLoop();
         }
         private static string GetIp()
         {

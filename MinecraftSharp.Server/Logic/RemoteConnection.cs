@@ -10,8 +10,9 @@ using System.Threading.Tasks;
 
 namespace MinecraftSharp.Server.Logic
 {
-    class RemoteConnection : INotifyPropertyChanged, IDisposable
+    class RemoteConnection //: INotifyPropertyChanged, IDisposable
     {
+        /*
         public RemoteConnection(TcpClient client)
         {
             NetworkClient = client;
@@ -259,5 +260,6 @@ namespace MinecraftSharp.Server.Logic
             if (PlayerManager != null)
                 PlayerManager.Dispose();
         }
+        //*/
     }
 }

@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logic\MinecraftSharp\Commands\Command.cs" />
     <Compile Include="Logic\Minecraft\Difficulty.cs" />
     <Compile Include="Logic\RemoteConnection.cs" />
     <Compile Include="Logic\ServerSettings.cs" />
